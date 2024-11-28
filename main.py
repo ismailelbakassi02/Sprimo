@@ -10,20 +10,31 @@ from enemy import Enemy
 mixer.init()
 pygame.init()
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 9d3e2ee7fd522c0b1deece7c6896d2e6fa96adcd
 #game dimensions
 SCREEN_WIDTH = 400
 SCREEN_HEIGHT = 600
 
 #Screen
+<<<<<<< HEAD
 screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT)) 
+=======
+screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
+>>>>>>> 9d3e2ee7fd522c0b1deece7c6896d2e6fa96adcd
 pygame.display.set_caption('sprimo')
 clock = pygame.time.Clock()
 FPS = 60
 
 #load music and sounds
 pygame.mixer.music.load('assets/music.mp3')
+<<<<<<< HEAD
 pygame.mixer.music.set_volume(0.0)
+=======
+pygame.mixer.music.set_volume(0.6)
+>>>>>>> 9d3e2ee7fd522c0b1deece7c6896d2e6fa96adcd
 pygame.mixer.music.play(-1, 0.0)
 jump_fx = pygame.mixer.Sound('assets/jump.mp3')
 jump_fx.set_volume(0.5)
@@ -32,15 +43,29 @@ death_fx.set_volume(0.5)
 
 
 #game variables
+<<<<<<< HEAD
 SCROLL_THRESH = 200 
 GRAVITY = 0.8
+=======
+SCROLL_THRESH = 200
+GRAVITY = 0.5
+>>>>>>> 9d3e2ee7fd522c0b1deece7c6896d2e6fa96adcd
 MAX_PLATFORMS = 20
 scroll = 0
 bg_scroll = 0
 game_over = False
 score = 0
 fade_counter = 0
+<<<<<<< HEAD
 high_score = 0
+=======
+
+if os.path.exists('score.txt'):
+	with open('score.txt', 'r') as file:
+		high_score = int(file.read())
+else:
+	high_score = 0
+>>>>>>> 9d3e2ee7fd522c0b1deece7c6896d2e6fa96adcd
 
 #define colours
 WHITE = (255, 255, 255)
@@ -58,7 +83,11 @@ platform_image = pygame.image.load('assets/wood.png').convert_alpha()
 
 #l3osfor spritesheet
 bird_sheet_img = pygame.image.load('assets/bird.png').convert_alpha()
+<<<<<<< HEAD
 bird_sheet = SpriteSheet(bird_sheet_img) #katkhlik tkhdm b wahd l3dad dyal lframes ka image w7da
+=======
+bird_sheet = SpriteSheet(bird_sheet_img)
+>>>>>>> 9d3e2ee7fd522c0b1deece7c6896d2e6fa96adcd
 
 
 #function for outputting text onto the screen
@@ -66,11 +95,19 @@ def draw_text(text, font, text_col, x, y):
 	img = font.render(text, True, text_col)
 	screen.blit(img, (x, y))
 
+<<<<<<< HEAD
 #function for drawing info panel (dak lfo9ani)
 def draw_panel():
 	pygame.draw.rect(screen, PANEL, (0, 0, SCREEN_WIDTH, 30))
 	pygame.draw.line(screen, WHITE, (0, 30), (SCREEN_WIDTH, 30), 1)
 	draw_text('TON SCORE est: ' + str(score), font_small, WHITE, 0, 0)
+=======
+#function for drawing info panel
+def draw_panel():
+	pygame.draw.rect(screen, PANEL, (0, 0, SCREEN_WIDTH, 30))
+	pygame.draw.line(screen, WHITE, (0, 30), (SCREEN_WIDTH, 30), 1)
+	draw_text('Ton SCORE est: ' + str(score), font_small, WHITE, 0, 0)
+>>>>>>> 9d3e2ee7fd522c0b1deece7c6896d2e6fa96adcd
 
 
 #function for drawing the background
@@ -78,9 +115,12 @@ def draw_bg(bg_scroll):
 	screen.blit(bg_image, (0, 0 + bg_scroll))
 	screen.blit(bg_image, (0, -600 + bg_scroll))
 
+<<<<<<< HEAD
 
 
 
+=======
+>>>>>>> 9d3e2ee7fd522c0b1deece7c6896d2e6fa96adcd
 #class player
 class Player():
 	def __init__(self, x, y):
@@ -89,7 +129,11 @@ class Player():
 		self.height = 40
 		self.rect = pygame.Rect(0, 0, self.width, self.height)
 		self.rect.center = (x, y)
+<<<<<<< HEAD
 		self.vel_y = 0 #ta7rok vertical
+=======
+		self.vel_y = 0
+>>>>>>> 9d3e2ee7fd522c0b1deece7c6896d2e6fa96adcd
 		self.flip = False
 
 	def move(self):
@@ -100,10 +144,17 @@ class Player():
 
 		#les buttons
 		key = pygame.key.get_pressed()
+<<<<<<< HEAD
 		if key[pygame.K_LEFT]:
 			dx = -10
 			self.flip = True
 		if key[pygame.K_RIGHT]:
+=======
+		if key[pygame.K_a]:
+			dx = -10
+			self.flip = True
+		if key[pygame.K_d]:
+>>>>>>> 9d3e2ee7fd522c0b1deece7c6896d2e6fa96adcd
 			dx = 10
 			self.flip = False
 
@@ -204,7 +255,11 @@ while run:
 			p_x = random.randint(0, SCREEN_WIDTH - p_w)
 			p_y = platform.rect.y - random.randint(80, 120)
 			p_type = random.randint(1, 2)
+<<<<<<< HEAD
 			if p_type == 1 and score > 0:
+=======
+			if p_type == 1 and score > 10:
+>>>>>>> 9d3e2ee7fd522c0b1deece7c6896d2e6fa96adcd
 				p_moving = True
 			else:
 				p_moving = False
@@ -228,7 +283,11 @@ while run:
 
 		#draw line at previous high score
 		pygame.draw.line(screen, WHITE, (0, score - high_score + SCROLL_THRESH), (SCREEN_WIDTH, score - high_score + SCROLL_THRESH), 3)
+<<<<<<< HEAD
 		draw_text(f'MEILLEUR SCORE :{high_score}', font_small, WHITE, SCREEN_WIDTH - 230, score - high_score + SCROLL_THRESH)
+=======
+		draw_text('MEILLEUR SCORE', font_small, WHITE, SCREEN_WIDTH - 130, score - high_score + SCROLL_THRESH)
+>>>>>>> 9d3e2ee7fd522c0b1deece7c6896d2e6fa96adcd
 
 		#draw sprites
 		platform_group.draw(screen)
@@ -242,7 +301,10 @@ while run:
 		if sprimo.rect.top > SCREEN_HEIGHT:
 			game_over = True
 			death_fx.play()
+<<<<<<< HEAD
 
+=======
+>>>>>>> 9d3e2ee7fd522c0b1deece7c6896d2e6fa96adcd
 		#check for touch with enemies
 		if pygame.sprite.spritecollide(sprimo, enemy_group, False):
 			if pygame.sprite.spritecollide(sprimo, enemy_group, False, pygame.sprite.collide_mask):
@@ -255,9 +317,15 @@ while run:
 				pygame.draw.rect(screen, BLACK, (0, y * 100, fade_counter, 100))
 				pygame.draw.rect(screen, BLACK, (SCREEN_WIDTH - fade_counter, (y + 1) * 100, SCREEN_WIDTH, 100))
 		else:
+<<<<<<< HEAD
 			draw_text('GAME OVER!', font_big, WHITE, 40, 200)
 			draw_text('TON SCORE: ' + str(score), font_big, WHITE, 40, 250)
 			draw_text('APPUIYEZ SUR ESPACE ', font_big, WHITE, 40, 300)
+=======
+			draw_text('GAME OVER!', font_big, WHITE, 130, 200)
+			draw_text('Ton SCORE: ' + str(score), font_big, WHITE, 130, 250)
+			draw_text('APPUIYEZ SUR ESPACE \n POUR  REJOUER', font_big, WHITE, 40, 300)
+>>>>>>> 9d3e2ee7fd522c0b1deece7c6896d2e6fa96adcd
 			#update high score
 			if score > high_score:
 				high_score = score
